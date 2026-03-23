@@ -18,7 +18,7 @@ The next stage of pedal design will be an experimental phase. I have acquired a 
 
 ## 25-02-2026 - 07-03-2026
 ### Experiment 1 - Input Stage
-![Figure 1: HP-v1's input stage](AV_Files/"V1_Input_Stage_07-03-26.png")
+![Figure 1: HP-v1's input stage](AV_Files/V1_Input_Stage_07-03-26.png)
 The first tweak I am aiming to make to the HP circuit is to allow greater versitility in terms of pedal chain order. I will test different configurations of input impedance for the harmonic percolator to find the optimal one, that allows versatile pedal placement without comprimising a solid tone. The measurement of the HP-v1's input impedance can be seen in Figure 2, which is dominated by the bias resistor (harmonics pot). The input impedance varies between 5k-100k Ohms between the slider ends of the potientiometer. 
 ![Figure 2: Simulation of Input Impedance of HP-v1 - harmonics slider left](AV_Files/V1_Input_Impedance_a_25-02-26.png)
 ![Figure 3: Simulation of Input Impedance of HP-v1 - harmonics slider right](AV_Files/V1_Input_Impedance_b_25-02-26.png)
@@ -34,7 +34,7 @@ This part of the pedal should create a very percussive, abrasive sound - useful 
 ![Figure 4: V1 Gain Stage](AV_Files/V1_Gain_Stage_07-03-26.png)
 
 #### a. Pre-Q1 Filtering
-First, we can select the allowed frequency ranges to interact with the gain stage with a combination of a high-pass (coupling capacitor) and low-pass (parallel capacitor to ground) filter. V1's low-pass consists of a 100pF parallel capacitor -  for approximate $\mathcal{O}^{3} \Omega$, this leaves $f_{cutoff}\approx 15k$ Hz. This would remove alot of hissing or the 'brilliance' quality of the effect. I am swayed to keep this but I think it's wise to revisit this after the rest of the pedal is developed.
+First, we can select the allowed frequency ranges to interact with the gain stage with a combination of a high-pass (coupling capacitor) and low-pass (parallel capacitor to ground) filter. V1's low-pass consists of a 100pF parallel capacitor -  for approximate $10^{3} \Omega$, this leaves $f_{cutoff}\approx 15k$ Hz. This would remove alot of hissing or the 'brilliance' quality of the effect. I am swayed to keep this but I think it's wise to revisit this after the rest of the pedal is developed.
 
 ## 09-03-2026
 V1's high-pass contains a series 50nF capacitor, which cuts off low frequncies below $\approx 100$ Hz. For our purpose, this should be decreased to increase the cut off frequency. The Peacock suggests 10nF, so I tested the sound of the circuit with C3 taking values of stock 50nF, 25nF, 10nF, and 1nF. 50nF and 25nF seemed to keep the low-end muddiness that I'm trying to remove, and 1nF removed far too much frequency content to make the effect usable. So 10nF seems the sweet spot. The audio files are found at the address: "C:\Users\charl\AppData\Local\LTspice\Audio Files\C3".
