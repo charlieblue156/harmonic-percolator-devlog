@@ -18,7 +18,7 @@ The next stage of pedal design will be an experimental phase. I have acquired a 
 
 ## 25-02-2026 - 07-03-2026
 ### Experiment 1 - Input Stage
-![Figure 1: HP-v1's input stage](AV_Files/V1_Input_Stage_07-03-26.png)
+![Figure 1: HP-v1's input stage](AV_Files/"V1_Input_Stage_07-03-26.png")
 The first tweak I am aiming to make to the HP circuit is to allow greater versitility in terms of pedal chain order. I will test different configurations of input impedance for the harmonic percolator to find the optimal one, that allows versatile pedal placement without comprimising a solid tone. The measurement of the HP-v1's input impedance can be seen in Figure 2, which is dominated by the bias resistor (harmonics pot). The input impedance varies between 5k-100k Ohms between the slider ends of the potientiometer. 
 ![Figure 2: Simulation of Input Impedance of HP-v1 - harmonics slider left](AV_Files/V1_Input_Impedance_a_25-02-26.png)
 ![Figure 3: Simulation of Input Impedance of HP-v1 - harmonics slider right](AV_Files/V1_Input_Impedance_b_25-02-26.png)
@@ -48,7 +48,7 @@ Audibly, 100k Ohms reduces the amount of fuzz to an almost overdrive likeness, 1
 
 
 #### c. Q1 Feedback and Pre-Q2 Filtering
-Both Q1 and Q2 feature shunt-shunt feedback, which results in an inverse dependancy of both input and output impedance on the 'amount of feedback'. ... This can allow us to create a tweakable filtering topology when combined with a parallel or series capacitor. 
+Both Q1 and Q2 feature shunt-shunt feedback, which results in an inverse dependancy of both input and output impedance on the 'amount of feedback': $R_{of}=\frac{R_o}{1+A\beta}, R_{if}=\frac{R_i}{1+A\beta}$ This can allow us to create a tweakable filtering topology when combined with a parallel or series capacitor. 
 
 ## 11-03-2026
 First, to show some comprehension of the reading I've been doing, I'm going to compute the expected effects on input and output impedance of Q1 by varying R4 (the feedback resistor).
@@ -61,8 +61,12 @@ My thoughts for finding a way to measure, understand, and then tweak the frequen
 I began by isolating Q1, conducting a circuit theory exercise to calculate the output impedance of the circuit as a function of the feedback resistance. This involved modelling Q1 for small signals, and splitting the circuit into A and B subcircuits as per the method to find output and input impedances (see orange notebook for method). This gave the equation for output resistance $$R_{of}= \frac{R_o}{1+\frac{-g_m (R_f\parallel R_C)(R_S \parallel R_f \parallel r_\pi)}{R_f}}$$
 Simulated in a python script for varying $R_f$ (which can be found in the R4 AV files), gave the resultant plot as seen in Figure 6.
 
-![Figure 6: Plot of resultant input and output impedances over $\text{log}_{10}(R_f)$.](AV Files/R4/Q1 Input Output Impedance Calculation.png)
+![Figure 6: Plot of resultant input and output impedances over $\text{log}_{10}(R_f)$ .](AV Files/R4/Q1_Input_Output_Impedance_Calculation.png)
 
 Copy the experiment of LTspice onto here showing expected results via measurement via test signal
 
 Go onto say that this method would prbably be a good idea if Q1 was the only output stage - things get much more complex when we consider the interconnected Q2. Rather, we could directly measure the frequency response of signals at the collector of Q1 - given we use filtering topologies in the feedback loop of Q1.
+
+## 23-03-2026
+The important thing to note is that due to the complex system of Q1 and Q2 coupled together, a simple model quantifying the filtering of the opertation of Q1 is not easy to derive. Hence, using LTSpice will be a helpful tool. Nevertheless, understanding the following topics are crucial to be able to qualitatively design the filter effects of Q1: finding amplifier parameters (most importantly voltage gain $A_v$) of a collector-base feedback common-emitter amplifier, Bode plots inclduing zeros and poles of transfer functions, and low-pass active filter topologies.
+
